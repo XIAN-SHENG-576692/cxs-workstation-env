@@ -26,6 +26,13 @@ EOF
     exit 1
 }
 
+for cmd in $REQUIRED_CMDS; do
+    if ! command -v "$cmd" >/dev/null 2>&1; then
+        echo "Error: required command '$cmd' not found." >&2
+        usage
+    fi
+done
+
 # Parse command-line arguments
 while [ $# -gt 0 ]; do
     case "$1" in
