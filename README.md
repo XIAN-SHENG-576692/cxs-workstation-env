@@ -33,12 +33,12 @@ https://github.com/XIAN-SHENG-576692/cxs-workstation-env.git
 ### Init
 
 ```shell
-./init/init_c_dev_env.sh
-./init/init_latex_dev_env.sh
-./init/init_lean4_dev_env.sh
-./init/init_rust_dev_env.sh
-./init/init_typst_dev_env.sh -p <INSTALL_PATH>
-./init/install_cargo-binstall.sh
-./init/install_codex.sh
-./init/install_common_packages.sh
+. ./init/init_c_dev_env.sh
+. ./init/init_latex_dev_env.sh
+. ./init/init_lean4_dev_env.sh
+. ./init/init_rust_dev_env.sh
+. ./init/init_typst_dev_env.sh -p <INSTALL_PATH>
+. ./init/install_cargo-binstall.sh
+. ./init/install_codex.sh
+. ./init/install_common_packages.sh
 ```
