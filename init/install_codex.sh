@@ -26,8 +26,7 @@ curl
 
 # ==================================================
 # Install codex
-export CODEX_NON_INTERACTIVE=true
-curl -fsSL https://chatgpt.com/codex/install.sh | sh
+sh -c 'curl -fsSL https://chatgpt.com/codex/install.sh | CODEX_NON_INTERACTIVE=1 sh'
 
 # ==================================================
 # Export environment variables
