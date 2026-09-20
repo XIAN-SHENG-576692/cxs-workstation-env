@@ -16,16 +16,21 @@ case ":\${PATH}:" in
 esac
 EOF
 
+# ==================================================
+# Write Shell Configuration Files
 mkdir -p "$HOME/.config/fish"
+
+CONFIG_FILES="
+$HOME/.bashrc
+$HOME/.zshrc
+$HOME/.config/fish/config.fish
+"
 
 SAFE_ENV_LINE='[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"'
 eval "$SAFE_ENV_LINE"
-if ! grep -qF "$SAFE_ENV_LINE" ~/.bashrc; then
-    echo "$SAFE_ENV_LINE" >> ~/.bashrc
-fi
-if ! grep -qF "$SAFE_ENV_LINE" ~/.zshrc; then
-    echo "$SAFE_ENV_LINE" >> ~/.zshrc
-fi
-if ! grep -qF "$SAFE_ENV_LINE" ~/.config/fish/config.fish; then
-    echo "$SAFE_ENV_LINE" >> ~/.config/fish/config.fish
-fi
+
+for file in $CONFIG_FILES; do
+    if [ ! -f "$file" ] || ! grep -qF "$SAFE_ENV_LINE" "$file"; then
+        echo "$SAFE_ENV_LINE" >> "$file"
+    fi
+done
