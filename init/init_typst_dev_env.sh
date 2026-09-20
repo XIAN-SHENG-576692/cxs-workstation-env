@@ -54,8 +54,17 @@ fi
 mkdir -p "${INSTALL_PATH}"
 
 # ==================================================
+# SCRIPT_DIR
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do
+  DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+
+# ==================================================
 # Configuration
-SCRIPT_DIR=$(cd $(dirname $0); pwd)
 REPO_ROOT_DIR=$(cd "${SCRIPT_DIR}/.."; pwd)
 REPO_SCRIPTS_DIR="${REPO_ROOT_DIR}/scripts"
 
