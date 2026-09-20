@@ -33,6 +33,14 @@ neovim
 vim
 "
 
+# Clear
+PACKAGES="
+${PACKAGES}
+libncurses5-dbg
+ncurses
+ncurses-bin
+"
+
 # Others
 PACKAGES="
 ${PACKAGES}

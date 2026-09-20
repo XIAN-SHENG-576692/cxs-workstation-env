@@ -4,6 +4,7 @@ SCRIPT_DIR=$(cd $(dirname $0); pwd)
 REPO_ROOT_DIR=$(cd "${SCRIPT_DIR}/.."; pwd)
 WORKSPACE_DIR="${REPO_ROOT_DIR}/workspace"
 
+IMAGE="fedora:latest"
 CONTAINER_NAME="my-workstation-env-container"
 
 if podman container exists "${CONTAINER_NAME}"; then
@@ -15,7 +16,7 @@ mkdir -p "${WORKSPACE_DIR}"
 
 podman run \
 	-d \
-	-v "${WORKSPACE_DIR}":/workspace:z,U \
+	-v "${REPO_ROOT_DIR}":/workspace:z,U \
 	-w /workspace \
 	--cap-add=SYS_PTRACE \
 	--group-add=keep-groups \
@@ -26,5 +27,5 @@ podman run \
 	--security-opt label=disable \
 	--security-opt seccomp=unconfined \
 	--volume=/run/udev:/run/udev:ro \
-	ubuntu:latest \
+	"${IMAGE}" \
 	tail -f /dev/null
