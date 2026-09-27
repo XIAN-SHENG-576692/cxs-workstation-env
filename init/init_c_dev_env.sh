@@ -17,47 +17,9 @@ REPO_SCRIPTS_DIR="${REPO_ROOT_DIR}/scripts"
 
 # ==================================================
 # Install packages
-PACKAGES=""
+PACKAGES=$(find "${SCRIPT_DIR}" -maxdepth 1 -type f -name "init_c_dev_env_packages_*.txt" -exec grep -hEv '^#|^$' {} + | xargs)
 
-# common
-PACKAGES="
-${PACKAGES}
-autoconf
-build-essential
-clang
-clang-format
-clang-tidy
-cmake
-gcc
-gdb
-graphviz
-libclang-dev
-make
-opam
-"
-
-# gmp
-PACKAGES="
-${PACKAGES}
-gmp
-gmp-devel
-libgmp-dev
-"
-
-# pkgconf
-PACKAGES="
-${PACKAGES}
-pkg-config
-pkgconf-pkg-config
-"
-
-# zlib
-PACKAGES="
-${PACKAGES}
-zlib1g-dev
-zlib-devel
-"
-
+# --------------------------------------------------
 "${REPO_SCRIPTS_DIR}/install_packages_cross_platform.sh" \
     "${PACKAGES}"
 
@@ -69,4 +31,9 @@ eval $(opam env)
 opam switch create ocaml-base-compiler
 
 # Install Frama-C
+# Prerequisites:
+# - autoconf
+# - graphviz
+# - pkgconf / pkg-config / pkgconf-pkg-config
+# - zlib / zlib1g-dev / zlib-devel
 opam install frama-c -y --assume-depexts

@@ -1,0 +1,19 @@
+# --------------------------------------------------
+# opam
+opam
+
+# --------------------------------------------------
+# opam install frama-c -y --assume-depexts
+# Install prerequisites:
+autoconf
+graphviz
+
+# pkgconf
+pkgconf
+pkg-config
+pkgconf-pkg-config
+
+# zlib
+zlib
+zlib1g-dev
+zlib-devel

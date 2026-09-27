@@ -1,0 +1,12 @@
+# gmp
+gmp
+gmp-devel
+libgmp-dev
+
+# --------------------------------------------------
+# find_package(PkgConfig REQUIRED)
+
+# pkgconf
+pkgconf
+pkg-config
+pkgconf-pkg-config
