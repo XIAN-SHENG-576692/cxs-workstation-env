@@ -17,3 +17,7 @@ pkgconf-pkg-config
 zlib
 zlib1g-dev
 zlib-devel
+
+# z3
+# - Fix: Frama-C's WP (Weakest Precondition) plug-in need Z3 automated theorem prover on the system.
+z3
