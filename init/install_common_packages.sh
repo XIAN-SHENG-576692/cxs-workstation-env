@@ -45,6 +45,7 @@ ncurses-bin
 PACKAGES="
 ${PACKAGES}
 dos2unix
+jq
 less
 lsof
 procps
